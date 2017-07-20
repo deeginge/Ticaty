@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
             turnCount++;
             ImageButton box = (ImageButton) view;
             box.setTag(curPlayerName.getText().toString());
-
-            xsTurn = !xsTurn;
-            Log.e("playBoxClicked", "Action accepted. " + "Image is: " + box.getResources());
             box.setScaleType(ImageView.ScaleType.FIT_CENTER);
             if(turnCount > 4){
 
@@ -76,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 box.setImageResource(R.drawable.blueo);
                 this.curPlayerName.setText(player1.toCharArray(), 0, player1.length());
             }
+            xsTurn = !xsTurn;
+
         }
         else{
             //create Toast message.
