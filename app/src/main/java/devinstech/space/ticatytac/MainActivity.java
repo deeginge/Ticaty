@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
         bottomRow = botRow;
 
         curPlayerName = (TextView) findViewById(R.id.curPlayerName);
-        player1 = this.getSharedPreferences("devinstech.space.ticatytac", Context.MODE_PRIVATE).getString("player1", "test");
-        player2 = this.getSharedPreferences("devinstech.space.ticatytac", Context.MODE_PRIVATE).getString("player2", "test");
+        String p1name = this.getSharedPreferences("devinstech.space.ticatytac", Context.MODE_PRIVATE).getString("player1", "test");
+        String p2name = this.getSharedPreferences("devinstech.space.ticatytac", Context.MODE_PRIVATE).getString("player2", "test");
+        player1 = (p1name != null && !p1name.equals(""))?p1name:"Player One";
+        player2 = (p2name != null && !p1name.equals(""))?p2name:"Player Two";
 
         curPlayerName.setText(player1);
         for (ImageButton box:
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             ImageButton box = (ImageButton) view;
             box.setTag(curPlayerName.getText().toString());
             box.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
             if(turnCount > 4){
 
                 if(this.checkWin()){
